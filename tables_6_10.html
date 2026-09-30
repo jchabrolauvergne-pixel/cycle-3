@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tables de multiplication de 6 à 10</title>
+<meta name="description" content="Apprendre et réviser les tables de 6, 7, 8, 9 et 10 : tables et astuces, quiz de 20 questions, facteur manquant et défi chrono.">
+<meta name="themes" content="maths, tables de multiplication, CM2">
+<style>
+  :root{
+    --bg:#f4f7fb; --card:#ffffff; --ink:#1f2a37; --muted:#5b6b7d;
+    --primary:#3559b7; --primary-soft:#e5ecfb; --accent:#e8833a; --accent-soft:#fdeede;
+    --ok:#2e9e5b; --ok-soft:#e3f6ea; --ko:#d14343; --ko-soft:#fbe5e5; --line:#dde4ec;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.5}
+  header{background:var(--primary);color:#fff;padding:18px 16px 0}
+  .wrap{max-width:860px;margin:0 auto}
+  header a.back{color:#dbe5fb;text-decoration:none;font-size:15px}
+  h1{margin:6px 0 4px;font-size:26px}
+  .sub{margin:0 0 14px;color:#dbe5fb;font-size:16px}
+  .badge{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:600;margin-left:6px;vertical-align:middle}
+  nav{display:flex;gap:6px;flex-wrap:wrap}
+  nav button{border:0;background:rgba(255,255,255,.15);color:#fff;padding:10px 14px;border-radius:10px 10px 0 0;font-size:16px;cursor:pointer;font-weight:600}
+  nav button.on{background:var(--bg);color:var(--primary)}
+  main{padding:18px 16px 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  h2{margin:0 0 10px;font-size:21px;color:var(--primary)}
+  h3{margin:14px 0 6px;font-size:18px}
+  .tables{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px}
+  .tbl{border:2px solid var(--line);border-radius:12px;padding:10px 12px;font-variant-numeric:tabular-nums}
+  .tbl b.t{display:block;color:var(--primary);font-size:18px;margin-bottom:4px}
+  .tbl div{display:flex;justify-content:space-between;font-size:17px}
+  .tbl div span:last-child{font-weight:700}
+  .tip{background:#fff8d8;border-left:5px solid #f0c400;padding:10px 14px;border-radius:8px;margin-top:10px}
+  .tip ul{margin:4px 0 0;padding-left:20px}
+  .sel{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+  .sel label{border:2px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;font-weight:600;user-select:none}
+  .sel input{display:none}
+  .sel label.on{background:var(--primary);border-color:var(--primary);color:#fff}
+  .q-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:15px;margin-bottom:6px}
+  .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:16px}
+  .bar>i{display:block;height:100%;background:var(--primary);width:0;transition:width .3s}
+  .op{font-size:44px;font-weight:800;text-align:center;margin:10px 0 16px;font-variant-numeric:tabular-nums}
+  .op .blank{display:inline-block;min-width:70px;border-bottom:4px solid var(--accent);color:var(--accent)}
+  .answer{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .answer input{width:140px;font-size:32px;text-align:center;padding:8px;border:3px solid var(--line);border-radius:12px;font-weight:700}
+  .answer input:focus{outline:none;border-color:var(--primary)}
+  .answer input.good{border-color:var(--ok);background:var(--ok-soft)}
+  .answer input.bad{border-color:var(--ko);background:var(--ko-soft)}
+  .fb{margin-top:14px;padding:12px 14px;border-radius:10px;display:none;text-align:center}
+  .fb.ok{display:block;background:var(--ok-soft)}
+  .fb.ko{display:block;background:var(--ko-soft)}
+  .btn{border:0;background:var(--primary);color:#fff;font-size:17px;font-weight:600;padding:11px 18px;border-radius:10px;cursor:pointer}
+  .btn.alt{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .center{justify-content:center}
+  .score{font-size:44px;font-weight:800;color:var(--primary);margin:6px 0}
+  .review{columns:2;padding-left:20px} .review li{margin-bottom:4px}
+  .timer{font-size:28px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}
+  .hide{display:none}
+  @media (max-width:600px){body{font-size:17px}.op{font-size:38px}.review{columns:1}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html">← Tous les quiz</a>
+    <h1>Tables de 6 à 10 <span class="badge">CM2</span></h1>
+    <p class="sub">Apprendre, s'entraîner, battre son record</p>
+    <nav id="tabs">
+      <button data-tab="tables" class="on">📘 Tables</button>
+      <button data-tab="quiz">✏️ Quiz</button>
+      <button data-tab="manque">❓ Facteur manquant</button>
+      <button data-tab="chrono">⏱️ Défi chrono</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="tables">
+    <div class="card">
+      <h2>Les tables</h2>
+      <div class="tables" id="tblGrid"></div>
+      <div class="tip">💡 <b>Astuces</b>
+        <ul>
+          <li><b>×10</b> : on ajoute un 0 → 7 × 10 = 70.</li>
+          <li><b>×9</b> : c'est ×10 moins une fois → 9 × 7 = 70 − 7 = 63. Et les chiffres du résultat font toujours 9 (6 + 3).</li>
+          <li><b>×8</b> : c'est le double du double du double → 8 × 6 : 12, 24, <b>48</b>.</li>
+          <li><b>×6</b> : c'est ×5 plus une fois → 6 × 7 = 35 + 7 = 42.</li>
+          <li>On peut <b>inverser</b> : 7 × 8 = 8 × 7. Si tu connais l'un, tu connais l'autre !</li>
+          <li>Les pièges à retenir : <b>7 × 8 = 56</b> (5, 6, 7, 8 !), <b>6 × 7 = 42</b>, <b>7 × 7 = 49</b>, <b>8 × 8 = 64</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="hide"><div class="card" id="quizBox"></div></section>
+  <section id="manque" class="hide"><div class="card" id="manqueBox"></div></section>
+  <section id="chrono" class="hide"><div class="card" id="chronoBox"></div></section>
+
+</main>
+
+<script>
+const QUIZ_ID = 'tables-6-10';
+const TABLES = [6,7,8,9,10];
+const NB_Q = 20;
+
+const $ = id => document.getElementById(id);
+const rnd = n => Math.floor(Math.random()*n);
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]];} return a; };
+const bestKey = k => `quizBest_${QUIZ_ID}_${k}`;
+function getBest(k){ try{ return parseInt(localStorage.getItem(bestKey(k)))||0; }catch(e){ return 0; } }
+function setBest(k,v){ try{ localStorage.setItem(bestKey(k), v); }catch(e){} }
+
+/* ---------- Affichage des tables ---------- */
+$('tblGrid').innerHTML = TABLES.map(t => `<div class="tbl"><b class="t">Table de ${t}</b>${
+  Array.from({length:10},(_,i)=>`<div><span>${t} × ${i+1}</span><span>${t*(i+1)}</span></div>`).join('')}</div>`).join('');
+
+/* ---------- Onglets ---------- */
+document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x===b));
+  ['tables','quiz','manque','chrono'].forEach(id => $(id).classList.toggle('hide', id!==b.dataset.tab));
+  const box = { quiz:'quizBox', manque:'manqueBox', chrono:'chronoBox' }[b.dataset.tab];
+  if (box && !$(box).dataset.ready) setups[b.dataset.tab]();
+});
+
+/* ---------- Choix des tables (commun) ---------- */
+function selector(id){
+  return `<p class="hint">Quelles tables ?</p><div class="sel" id="${id}">${
+    TABLES.map(t=>`<label class="on"><input type="checkbox" value="${t}" checked>${t}</label>`).join('')}</div>`;
+}
+function bindSelector(id){
+  $(id).querySelectorAll('label').forEach(l => l.onclick = e => {
+    e.preventDefault(); const c = l.querySelector('input');
+    const nOn = $(id).querySelectorAll('input:checked').length;
+    if (c.checked && nOn === 1) return;           // au moins une table
+    c.checked = !c.checked; l.classList.toggle('on', c.checked);
+  });
+}
+const chosen = id => [...$(id).querySelectorAll('input:checked')].map(c => +c.value);
+
+/* Génère n questions sans doublon tant que possible (multiplicateurs de 2 à 10) */
+function makeFacts(tables, n){
+  let pool = [];
+  tables.forEach(t => { for (let k=2;k<=10;k++) pool.push([t,k]); });
+  let out = [];
+  while (out.length < n) out = out.concat(shuffle(pool));
+  return out.slice(0, n).map(([t,k]) => Math.random()<.5 ? [t,k] : [k,t]);
+}
+
+/* ---------- Moteur quiz (produit ou facteur manquant) ---------- */
+function makeQuiz(boxId, key, title, missing){
+  const box = $(boxId), selId = boxId+'-sel';
+  let qs, i, score, wrong, locked;
+  function intro(){
+    box.dataset.ready = 1;
+    box.innerHTML = `<h2>${title}</h2>
+      <p>${missing ? 'Trouve le nombre qui manque : 7 × <b>?</b> = 56' : 'Calcule le résultat : 7 × 8 = <b>?</b>'} — ${NB_Q} questions.</p>
+      ${selector(selId)}
+      <p class="hint">Meilleur score : ${getBest(key)} / ${NB_Q}</p>
+      <div class="row"><button class="btn" id="${boxId}-go">C'est parti !</button></div>`;
+    bindSelector(selId);
+    $(`${boxId}-go`).onclick = () => start(chosen(selId));
+  }
+  let tabs;
+  function start(t){ tabs = t; qs = makeFacts(t, NB_Q); i = 0; score = 0; wrong = []; show(); }
+  function show(){
+    locked = false;
+    const [a,b] = qs[i];
+    const hideLeft = missing && Math.random()<.5;
+    const txt = !missing ? `${a} × ${b} = <span class="blank">?</span>`
+      : hideLeft ? `<span class="blank">?</span> × ${b} = ${a*b}` : `${a} × <span class="blank">?</span> = ${a*b}`;
+    qs[i].expected = !missing ? a*b : hideLeft ? a : b;
+    box.innerHTML = `<h2>${title}</h2>
+      <div class="q-top"><span>Question ${i+1} / ${qs.length}</span><span>Score : ${score}</span></div>
+      <div class="bar"><i style="width:${i/qs.length*100}%"></i></div>
+      <div class="op">${txt}</div>
+      <form class="answer" id="${boxId}-f"><input id="${boxId}-in" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Ta réponse"><button class="btn">Valider</button></form>
+      <div class="fb" id="${boxId}-fb"></div>
+      <div class="row center hide" id="${boxId}-next"><button class="btn">${i+1<qs.length?'Question suivante →':'Voir mon score'}</button></div>`;
+    const inp = $(`${boxId}-in`); inp.focus();
+    $(`${boxId}-f`).onsubmit = e => { e.preventDefault(); if (locked) { next(); return; } check(inp); };
+    $(`${boxId}-next`).querySelector('button').onclick = next;
+  }
+  function check(inp){
+    const v = inp.value.trim(); if (v === '') return;
+    locked = true; inp.readOnly = true;
+    const [a,b] = qs[i], ok = parseInt(v) === qs[i].expected;
+    inp.classList.add(ok ? 'good' : 'bad');
+    const full = `${a} × ${b} = ${a*b}`;
+    if (ok) score++; else wrong.push(full);
+    const fb = $(`${boxId}-fb`); fb.className = 'fb ' + (ok ? 'ok' : 'ko');
+    fb.innerHTML = ok ? `✔ <b>Bravo !</b> ${full}` : `✘ La bonne réponse : <b>${full}</b>`;
+    $(`${boxId}-next`).classList.remove('hide');
+  }
+  function next(){ i++; i<qs.length ? show() : end(); }
+  function end(){
+    const best = Math.max(getBest(key), score); setBest(key, best);
+    const pct = score/qs.length;
+    const msg = pct===1 ? 'Parfait ! 🏆' : pct>=0.8 ? 'Très bien ! 🌟' : pct>=0.5 ? 'Pas mal, continue ! 💪' : 'Relis les tables et réessaie 📘';
+    box.innerHTML = `<h2>${title} — terminé</h2>
+      <div class="score">${score} / ${qs.length}</div><p><b>${msg}</b><br>Meilleur score : ${best} / ${qs.length}</p>
+      ${wrong.length ? `<h3>À revoir (recopie-les 3 fois !)</h3><ul class="review">${[...new Set(wrong)].map(w=>`<li>${w}</li>`).join('')}</ul>` : ''}
+      <div class="row"><button class="btn" id="${boxId}-again">Rejouer</button><button class="btn alt" id="${boxId}-chg">Changer de tables</button></div>`;
+    $(`${boxId}-again`).onclick = () => start(tabs);
+    $(`${boxId}-chg`).onclick = intro;
+  }
+  return intro;
+}
+
+/* ---------- Défi chrono : 60 secondes ---------- */
+function setupChrono(){
+  const box = $('chronoBox'), selId = 'chrono-sel', DUREE = 60;
+  let facts, i, score, wrong, left, timer, tabs;
+  function intro(){
+    box.dataset.ready = 1;
+    box.innerHTML = `<h2>Défi chrono</h2>
+      <p>Réponds au plus grand nombre de calculs en <b>${DUREE} secondes</b>. Tape la réponse puis <b>Entrée</b>.</p>
+      ${selector(selId)}
+      <p class="hint">Record : ${getBest('chrono')} bonnes réponses</p>
+      <div class="row"><button class="btn" id="chr-go">Démarrer ⏱️</button></div>`;
+    bindSelector(selId);
+    $('chr-go').onclick = () => { tabs = chosen(selId); start(); };
+  }
+  function start(){
+    facts = makeFacts(tabs, 200); i = 0; score = 0; wrong = []; left = DUREE;
+    box.innerHTML = `<h2>Défi chrono</h2>
+      <div class="q-top"><span class="timer" id="chr-t">${left}</span><span>Bonnes réponses : <b id="chr-s">0</b></span></div>
+      <div class="bar"><i id="chr-bar" style="width:100%"></i></div>
+      <div class="op" id="chr-op"></div>
+      <form class="answer" id="chr-f"><input id="chr-in" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Ta réponse"><button class="btn">OK</button></form>`;
+    const inp = $('chr-in');
+    showOp(); inp.focus();
+    $('chr-f').onsubmit = e => {
+      e.preventDefault(); const v = inp.value.trim(); if (v==='') return;
+      const [a,b] = facts[i];
+      if (parseInt(v) === a*b) { score++; $('chr-s').textContent = score; flash(inp,'good'); }
+      else { wrong.push(`${a} × ${b} = ${a*b}`); flash(inp,'bad'); }
+      i++; inp.value = ''; showOp(); inp.focus();
+    };
+    timer = setInterval(() => {
+      left--; $('chr-t').textContent = left; $('chr-bar').style.width = (left/DUREE*100)+'%';
+      if (left <= 0) { clearInterval(timer); end(); }
+    }, 1000);
+  }
+  function flash(el,c){ el.classList.add(c); setTimeout(()=>el.classList.remove(c),250); }
+  function showOp(){ const [a,b] = facts[i]; $('chr-op').innerHTML = `${a} × ${b} = <span class="blank">?</span>`; }
+  function end(){
+    const old = getBest('chrono'), best = Math.max(old, score); setBest('chrono', best);
+    box.innerHTML = `<h2>Temps écoulé !</h2>
+      <div class="score">${score} bonne${score>1?'s':''} réponse${score>1?'s':''}</div>
+      <p>${score > old && old > 0 ? '🏆 <b>Nouveau record !</b>' : `Record : ${best}`} — ${wrong.length} erreur${wrong.length>1?'s':''}</p>
+      ${wrong.length ? `<h3>À revoir</h3><ul class="review">${[...new Set(wrong)].map(w=>`<li>${w}</li>`).join('')}</ul>` : ''}
+      <div class="row"><button class="btn" id="chr-again">Rejouer</button><button class="btn alt" id="chr-chg">Changer de tables</button></div>`;
+    $('chr-again').onclick = start; $('chr-chg').onclick = intro;
+  }
+  // arrêter le chrono si on change d'onglet
+  document.querySelectorAll('#tabs button').forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.tab !== 'chrono' && timer && left > 0) { clearInterval(timer); timer = null; intro(); }
+  }));
+  intro();
+}
+
+const setups = {
+  quiz:   makeQuiz('quizBox',   'quiz',   'Quiz des tables', false),
+  manque: makeQuiz('manqueBox', 'manque', 'Facteur manquant', true),
+  chrono: setupChrono
+};
+</script>
+</body>
+</html>
