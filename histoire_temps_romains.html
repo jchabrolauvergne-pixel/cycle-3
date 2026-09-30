@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Se repérer dans le temps + chiffres romains (CM2)</title>
+<meta name="description" content="Histoire : la frise chronologique, les 5 grandes périodes, avant/après J.-C., les siècles et les chiffres romains. Leçon, quiz, exercices et frise à reconstituer.">
+<meta name="themes" content="histoire, frise, chiffres romains, CM2">
+<style>
+  :root{
+    --bg:#f7f4ef; --card:#ffffff; --ink:#2b2420; --muted:#6d6259;
+    --primary:#9a5b2e; --primary-soft:#f5e9df; --accent:#2f7f8a; --accent-soft:#e0f1f3;
+    --ok:#2e9e5b; --ok-soft:#e3f6ea; --ko:#d14343; --ko-soft:#fbe5e5; --line:#e6ddd3;
+    --p1:#8d6e63; --p2:#c0833a; --p3:#5c7a3a; --p4:#3a6f9a; --p5:#8a3f7a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.5}
+  header{background:var(--primary);color:#fff;padding:18px 16px 0}
+  .wrap{max-width:880px;margin:0 auto}
+  header a.back{color:#f3dfd0;text-decoration:none;font-size:15px}
+  h1{margin:6px 0 4px;font-size:26px}
+  .sub{margin:0 0 14px;color:#f3dfd0;font-size:16px}
+  .badge{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:600;margin-left:6px;vertical-align:middle}
+  nav{display:flex;gap:6px;flex-wrap:wrap}
+  nav button{border:0;background:rgba(255,255,255,.15);color:#fff;padding:10px 14px;border-radius:10px 10px 0 0;font-size:16px;cursor:pointer;font-weight:600}
+  nav button.on{background:var(--bg);color:var(--primary)}
+  main{padding:18px 16px 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  h2{margin:0 0 10px;font-size:21px;color:var(--primary)}
+  h3{margin:16px 0 6px;font-size:18px;color:var(--primary)}
+  table{width:100%;border-collapse:collapse;font-size:16px}
+  td,th{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:var(--primary-soft)}
+  .tip{background:#fff8d8;border-left:5px solid #f0c400;padding:10px 14px;border-radius:8px;margin-top:12px}
+  .signs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+  .signs div{border:2px solid var(--ink);border-radius:10px;text-align:center;width:72px;padding:4px 0}
+  .signs b{display:block;font-family:Georgia,serif;font-size:30px;line-height:1.2}
+  .rules li{margin-bottom:6px}
+  /* frise */
+  .frise{display:flex;border-radius:10px;overflow:hidden;margin:10px 0 4px;min-height:54px}
+  .frise div{color:#fff;font-weight:700;font-size:14px;padding:6px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.2}
+  .dates{display:flex;font-size:13px;color:var(--muted);font-weight:600}
+  .dates span{flex:1}
+  .c1{background:var(--p1)}.c2{background:var(--p2)}.c3{background:var(--p3)}.c4{background:var(--p4)}.c5{background:var(--p5)}
+  /* quiz */
+  .q-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:15px;margin-bottom:6px}
+  .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:16px}
+  .bar>i{display:block;height:100%;background:var(--primary);width:0;transition:width .3s}
+  .prompt{font-size:22px;margin:6px 0 18px}
+  .roman{font-family:Georgia,serif;font-weight:700;letter-spacing:1px}
+  .opts{display:flex;gap:10px;flex-wrap:wrap}
+  .opts button{flex:1 1 220px;font-size:18px;padding:12px 14px;border:2px solid var(--line);background:#fff;border-radius:12px;cursor:pointer;font-weight:600;color:var(--ink);text-align:left}
+  .opts button:hover:not(:disabled){border-color:var(--primary)}
+  .opts button.good{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+  .opts button.bad{background:var(--ko-soft);border-color:var(--ko);color:var(--ko)}
+  .answer{display:flex;gap:10px;flex-wrap:wrap}
+  .answer input{width:190px;font-size:28px;text-align:center;padding:8px;border:3px solid var(--line);border-radius:12px;font-weight:700;font-family:Georgia,serif;text-transform:uppercase}
+  .answer input:focus{outline:none;border-color:var(--primary)}
+  .answer input.good{border-color:var(--ok);background:var(--ok-soft)}
+  .answer input.bad{border-color:var(--ko);background:var(--ko-soft)}
+  .fb{margin-top:14px;padding:12px 14px;border-radius:10px;display:none}
+  .fb.ok{display:block;background:var(--ok-soft)}
+  .fb.ko{display:block;background:var(--ko-soft)}
+  .btn{border:0;background:var(--primary);color:#fff;font-size:17px;font-weight:600;padding:11px 18px;border-radius:10px;cursor:pointer}
+  .btn.alt{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .score{font-size:44px;font-weight:800;color:var(--primary);margin:6px 0}
+  .review li{margin-bottom:6px}
+  .hint{color:var(--muted);font-size:16px}
+  /* jeu frise */
+  .pool{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .pool button{font-size:17px;padding:10px 14px;border:2px solid var(--line);background:#fff;border-radius:10px;cursor:pointer;font-weight:600;color:var(--ink)}
+  .pool button:hover{border-color:var(--primary)}
+  .pool button.shake{animation:shake .3s;border-color:var(--ko);background:var(--ko-soft)}
+  .slots{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0}
+  .slot{border:2px dashed var(--line);border-radius:10px;min-height:88px;padding:6px;font-size:14px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:4px}
+  .slot.filled{border-style:solid;color:#fff}
+  .slot small{font-weight:400;opacity:.95}
+  .slot .ev{background:rgba(255,255,255,.2);border-radius:6px;padding:2px 4px;font-size:13px}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .hide{display:none}
+  @media (max-width:640px){
+    body{font-size:17px}.prompt{font-size:20px}
+    .slots{grid-template-columns:1fr}.slot{min-height:auto}
+    .frise div{font-size:12px;padding:4px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html">← Tous les quiz</a>
+    <h1>Se repérer dans le temps <span class="badge">CM2</span></h1>
+    <p class="sub">La frise, les grandes périodes, les siècles et les chiffres romains</p>
+    <nav id="tabs">
+      <button data-tab="lecon" class="on">📘 Leçon</button>
+      <button data-tab="quiz">✏️ Quiz</button>
+      <button data-tab="romains">🏛️ Chiffres romains</button>
+      <button data-tab="frise">🧩 Frise à reconstituer</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ LEÇON ============ -->
+  <section id="lecon">
+    <div class="card">
+      <h2>1. La frise chronologique</h2>
+      <p>C'est un <b>ruban qui représente le temps qui passe</b>. On la lit <b>de gauche à droite</b> et elle permet de placer les événements <b>les uns par rapport aux autres</b>.</p>
+
+      <h3>Les 5 grandes périodes de l'Histoire</h3>
+      <div class="frise">
+        <div class="c1" style="flex:1.3">Préhistoire</div>
+        <div class="c2" style="flex:1.2">Antiquité</div>
+        <div class="c3" style="flex:1">Moyen Âge</div>
+        <div class="c4" style="flex:.8">Temps modernes</div>
+        <div class="c5" style="flex:.8">Époque contemporaine</div>
+      </div>
+      <div class="dates"><span style="flex:1.3">origines</span><span style="flex:1.2">− 3 000</span><span style="flex:1">476</span><span style="flex:.8">1492</span><span style="flex:.8">1789 → auj.</span></div>
+      <p class="hint">(Frise simplifiée : elle n'est pas à l'échelle. En vrai, la Préhistoire est de loin la plus longue !)</p>
+      <table>
+        <tr><th>Période</th><th>Dates</th><th>Événement qui marque le début</th></tr>
+        <tr><td>La Préhistoire</td><td>des origines de l'Homme à − 3 000</td><td>l'apparition des premiers hommes</td></tr>
+        <tr><td>L'Antiquité</td><td>de − 3 000 à 476</td><td>l'invention de l'écriture</td></tr>
+        <tr><td>Le Moyen Âge</td><td>de 476 à 1492</td><td>la chute de l'Empire romain</td></tr>
+        <tr><td>Les Temps modernes</td><td>de 1492 à 1789</td><td>la découverte de l'Amérique</td></tr>
+        <tr><td>L'Époque contemporaine</td><td>de 1789 à nos jours</td><td>la Révolution française</td></tr>
+      </table>
+
+      <h3>À retenir</h3>
+      <p>Le calendrier utilisé en France (<b>grégorien</b>) compte les années à partir de la <b>naissance de Jésus-Christ</b>, en l'an 1.<br>
+      Un événement peut donc être daté <b>« avant J.-C. »</b> (on écrit souvent un signe −, comme − 3 000) ou <b>« après J.-C. »</b>.</p>
+      <div class="tip">💡 <b>Les siècles</b> : un siècle = <b>100 ans</b>. On les écrit en <b>chiffres romains</b>.<br>
+      De l'an 1 à l'an 100 : I<sup>er</sup> siècle. De 1401 à 1500 : XV<sup>e</sup> siècle.<br>
+      <b>Astuce :</b> pour 1492, on prend les chiffres avant les deux derniers (14) et on ajoute 1 → <b>15<sup>e</sup> siècle = XV<sup>e</sup></b>. Nous sommes au <b>XXI<sup>e</sup> siècle</b>.</div>
+    </div>
+
+    <div class="card">
+      <h2>2. Les chiffres romains</h2>
+      <p>Il existe <b>7 signes</b> différents :</p>
+      <div class="signs">
+        <div><b>I</b>1</div><div><b>V</b>5</div><div><b>X</b>10</div><div><b>L</b>50</div><div><b>C</b>100</div><div><b>D</b>500</div><div><b>M</b>1000</div>
+      </div>
+      <ol class="rules">
+        <li>Il n'y a <b>pas de zéro</b>.</li>
+        <li>On <b>additionne</b> les signes si ceux de <b>droite</b> sont plus <b>petits</b> : <span class="roman">XXIII</span> = 10 + 10 + 1 + 1 + 1 = 23 ; <span class="roman">XVII</span> = 10 + 5 + 1 + 1 = 17.</li>
+        <li>On n'écrit <b>jamais quatre</b> signes identiques à la suite : 3 = <span class="roman">III</span> mais 4 n'est pas <s class="roman">IIII</s>, 4 = <span class="roman">IV</span>.</li>
+        <li>On <b>soustrait</b> un signe qui est à <b>gauche</b> d'un plus <b>grand</b> : <span class="roman">IX</span> = 10 − 1 = 9 ; <span class="roman">IV</span> = 5 − 1 = 4 ; <span class="roman">CD</span> = 500 − 100 = 400.</li>
+        <li>Un signe placé entre deux plus grands est <b>soustrait</b> de celui de droite : <span class="roman">XIX</span> = 10 + (10 − 1) = 19.</li>
+      </ol>
+      <h3>De 1 à 30</h3>
+      <p class="roman" id="suite" style="line-height:1.9"></p>
+    </div>
+  </section>
+
+  <section id="quiz" class="hide"><div class="card" id="quizBox"></div></section>
+  <section id="romains" class="hide"><div class="card" id="romBox"></div></section>
+  <section id="frise" class="hide"><div class="card" id="friseBox"></div></section>
+</main>
+
+<script>
+const QUIZ_ID = 'histoire-temps-1';
+const $ = id => document.getElementById(id);
+const rnd = n => Math.floor(Math.random()*n);
+const pick = a => a[rnd(a.length)];
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]];} return a; };
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const bestKey = k => `quizBest_${QUIZ_ID}_${k}`;
+function getBest(k){ try{ return parseInt(localStorage.getItem(bestKey(k)))||0; }catch(e){ return 0; } }
+function setBest(k,v){ try{ localStorage.setItem(bestKey(k), v); }catch(e){} }
+
+/* ---------- Chiffres romains ---------- */
+const VAL = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+function toRoman(n){
+  const t = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
+  let s=''; for (const [v,r] of t) while (n>=v){ s+=r; n-=v; } return s;
+}
+function decompose(r){          // XIX -> "10 + (10 − 1)"
+  const terms=[]; for (let i=0;i<r.length;){
+    const v=VAL[r[i]], nx=VAL[r[i+1]]||0;
+    if (nx>v){ terms.push(`(${nx} − ${v})`); i+=2; } else { terms.push(v); i++; }
+  } return terms.join(' + ');
+}
+$('suite').innerHTML = Array.from({length:30},(_,i)=>`<span title="${i+1}">${toRoman(i+1)}</span>`).join(' · ');
+
+/* ---------- Périodes ---------- */
+const PERIODES = [
+  {n:'La Préhistoire', d:'origines → − 3 000', ev:"l'apparition des premiers hommes", c:'c1'},
+  {n:"L'Antiquité", d:'− 3 000 → 476', ev:"l'invention de l'écriture", c:'c2'},
+  {n:'Le Moyen Âge', d:'476 → 1492', ev:"la chute de l'Empire romain", c:'c3'},
+  {n:'Les Temps modernes', d:'1492 → 1789', ev:"la découverte de l'Amérique", c:'c4'},
+  {n:"L'Époque contemporaine", d:'1789 → nos jours', ev:'la Révolution française', c:'c5'}
+];
+const P = PERIODES.map(p => p.n);
+
+/* ---------- Banque QCM (30 questions, 20 tirées) ---------- */
+const QCM = [
+  {q:"Qu'est-ce qu'une frise chronologique ?", r:"Un ruban qui représente le temps qui passe", f:["Une carte des pays du monde","Un calendrier des anniversaires"]},
+  {q:"Dans quel sens lit-on une frise chronologique ?", r:"De gauche à droite", f:["De droite à gauche","De bas en haut"]},
+  {q:"Combien y a-t-il de grandes périodes dans l'Histoire ?", r:"5", f:["4","6","7"]},
+  {q:"Quelle est la toute première période de l'Histoire ?", r:"La Préhistoire", f:["L'Antiquité","Le Moyen Âge"]},
+  {q:"Quel événement marque le début de la Préhistoire ?", r:"L'apparition des premiers hommes", f:["L'invention de l'écriture","La découverte du feu"]},
+  {q:"Quel événement marque le début de l'Antiquité ?", r:"L'invention de l'écriture", f:["La chute de l'Empire romain","L'apparition des premiers hommes"]},
+  {q:"Quel événement marque le début du Moyen Âge ?", r:"La chute de l'Empire romain", f:["La découverte de l'Amérique","L'invention de l'écriture"]},
+  {q:"Quel événement marque le début des Temps modernes ?", r:"La découverte de l'Amérique", f:["La Révolution française","La chute de l'Empire romain"]},
+  {q:"Quel événement marque le début de l'Époque contemporaine ?", r:"La Révolution française", f:["La découverte de l'Amérique","La construction des châteaux forts"]},
+  {q:"En quelle année commence le Moyen Âge ?", r:"476", f:["1492","1789","− 3 000"]},
+  {q:"En quelle année commencent les Temps modernes ?", r:"1492", f:["476","1789","1066"]},
+  {q:"En quelle année commence l'Époque contemporaine ?", r:"1789", f:["1492","1914","476"]},
+  {q:"Vers quelle date commence l'Antiquité ?", r:"− 3 000 (3 000 ans avant J.-C.)", f:["476","1 000 après J.-C."]},
+  {q:"Dans quelle période vivons-nous aujourd'hui ?", r:"L'Époque contemporaine", f:["Les Temps modernes","Le Moyen Âge"]},
+  {q:"Quelle période se trouve entre l'Antiquité et les Temps modernes ?", r:"Le Moyen Âge", f:["La Préhistoire","L'Époque contemporaine"]},
+  {q:"Quelle période vient juste après la Préhistoire ?", r:"L'Antiquité", f:["Le Moyen Âge","Les Temps modernes"]},
+  {q:"L'amphithéâtre de Nîmes a été construit au Iᵉʳ siècle. C'est pendant…", r:"L'Antiquité", f:["Le Moyen Âge","La Préhistoire"]},
+  {q:"Un château fort construit en l'an 1100 date de quelle période ?", r:"Le Moyen Âge", f:["L'Antiquité","Les Temps modernes"]},
+  {q:"L'an 1600 se trouve dans quelle période ?", r:"Les Temps modernes", f:["Le Moyen Âge","L'Époque contemporaine"]},
+  {q:"Napoléon devient empereur en 1804. C'est pendant…", r:"L'Époque contemporaine", f:["Les Temps modernes","Le Moyen Âge"]},
+  {q:"Quelle période a duré le plus longtemps ?", r:"La Préhistoire", f:["Le Moyen Âge","L'Époque contemporaine"]},
+  {q:"Comment s'appelle le calendrier utilisé en France ?", r:"Le calendrier grégorien", f:["Le calendrier romain","Le calendrier lunaire"]},
+  {q:"À partir de quel événement notre calendrier compte-t-il les années ?", r:"La naissance de Jésus-Christ", f:["La chute de l'Empire romain","La Révolution française"]},
+  {q:"Que veut dire la date « − 3 000 » ?", r:"3 000 ans avant J.-C.", f:["3 000 ans après J.-C.","Il y a 3 000 ans"]},
+  {q:"Quel événement est le plus ancien ?", r:"L'an 200 avant J.-C.", f:["L'an 100 après J.-C.","L'an 476"]},
+  {q:"Combien d'années y a-t-il dans un siècle ?", r:"100", f:["10","1 000"]},
+  {q:"En quel siècle a lieu la découverte de l'Amérique (1492) ?", r:"Au XVᵉ siècle", f:["Au XIVᵉ siècle","Au XIXᵉ siècle"]},
+  {q:"Combien de signes différents utilise la numération romaine ?", r:"7", f:["5","10","26"]},
+  {q:"Les Romains avaient-ils un signe pour le zéro ?", r:"Non, il n'y a pas de zéro", f:["Oui, c'est le O","Oui, c'est le N"]},
+  {q:"Combien de fois au maximum peut-on écrire le même signe romain à la suite ?", r:"3 fois", f:["2 fois","4 fois"]}
+];
+const NB_QCM = 20, NB_ROM = 20;
+
+/* ---------- Générateur chiffres romains ---------- */
+const SPECIAUX = [40,44,49,50,60,90,99,100,400,500,1000,476,1492,1789,2026];
+function romQuestion(){
+  const type = pick(['r2a','r2a','a2r','siecle']);
+  if (type === 'r2a'){
+    const n = Math.random()<.75 ? 1+rnd(39) : pick(SPECIAUX), r = toRoman(n);
+    return { prompt:`Combien vaut <span class="roman">${r}</span> ?`, input:true, numeric:true,
+      check:v => parseInt(v)===n, good:`${n}`,
+      explain:`<span class="roman">${r}</span> = ${decompose(r)} = <b>${n}</b>`, recap:`${r} = ${n}` };
+  }
+  if (type === 'a2r'){
+    const n = 1+rnd(39), r = toRoman(n);
+    return { prompt:`Écris <b>${n}</b> en chiffres romains.`, input:true,
+      check:v => v.toUpperCase().replace(/\s/g,'')===r, good:r,
+      explain:`${n} = <span class="roman">${r}</span> (${decompose(r)})`, recap:`${n} = ${r}` };
+  }
+  const y = pick([1+rnd(100), 101+rnd(1900), pick([476,1492,1789,1515,800,1804,1969,2026])]);
+  const s = Math.ceil(y/100), r = toRoman(s);
+  return { prompt:`En quel siècle se trouve l'an <b>${y}</b> ? <span class="hint">(réponds en chiffres romains)</span>`, input:true,
+    check:v => v.toUpperCase().replace(/\s|ÈME|EME|ER|E$/g,'')===r, good:r,
+    explain:`L'an ${y} → ${s}${s===1?'ᵉʳ':'ᵉ'} siècle → <b class="roman">${r}${s===1?'ᵉʳ':'ᵉ'}</b> siècle`, recap:`${y} → ${r}${s===1?'ᵉʳ':'ᵉ'} siècle` };
+}
+
+/* ---------- Moteur de quiz (QCM ou réponse tapée) ---------- */
+function makeRunner(boxId, key, title, build){
+  const box = $(boxId); let qs, i, score, wrong, locked;
+  function start(){ box.dataset.started = 1; qs = build(); i = 0; score = 0; wrong = []; show(); }
+  function show(){
+    locked = false; const q = qs[i];
+    const body = q.input
+      ? `<form class="answer" id="${boxId}-f"><input id="${boxId}-in" type="text" ${q.numeric?'inputmode="numeric" style="font-family:inherit"':''} autocomplete="off" autocapitalize="characters" aria-label="Ta réponse"><button class="btn">Valider</button></form>`
+      : `<div class="opts">${q.opts.map(o=>`<button>${esc(o)}</button>`).join('')}</div>`;
+    box.innerHTML = `<h2>${title}</h2>
+      <div class="q-top"><span>Question ${i+1} / ${qs.length}</span><span>Score : ${score}</span></div>
+      <div class="bar"><i style="width:${i/qs.length*100}%"></i></div>
+      <div class="prompt">${q.prompt}</div>${body}
+      <div class="fb" id="${boxId}-fb"></div>
+      <div class="row hide" id="${boxId}-next"><button class="btn">${i+1<qs.length?'Question suivante →':'Voir mon score'}</button></div>`;
+    $(`${boxId}-next`).querySelector('button').onclick = next;
+    if (q.input){
+      const inp = $(`${boxId}-in`); inp.focus();
+      $(`${boxId}-f`).onsubmit = e => { e.preventDefault(); if (locked) return next();
+        const v = inp.value.trim(); if (!v) return; inp.readOnly = true;
+        const ok = q.check(v); inp.classList.add(ok?'good':'bad'); done(ok); };
+    } else {
+      box.querySelectorAll('.opts button').forEach((b,k) => b.onclick = () => {
+        const btns = box.querySelectorAll('.opts button'); btns.forEach(x => x.disabled = true);
+        const ok = q.opts[k] === q.answer;
+        btns.forEach((x,j) => { if (q.opts[j]===q.answer) x.classList.add('good'); else if (j===k) x.classList.add('bad'); });
+        done(ok);
+      });
+    }
+  }
+  function done(ok){
+    locked = true; const q = qs[i];
+    if (ok) score++; else wrong.push(q.recap);
+    const fb = $(`${boxId}-fb`); fb.className = 'fb ' + (ok?'ok':'ko');
+    fb.innerHTML = (ok ? '✔ <b>Bravo !</b>' : `✘ <b>Pas tout à fait…</b>${q.good?` Réponse : <b>${q.good}</b>`:''}`) + (q.explain ? '<br>'+q.explain : '');
+    $(`${boxId}-next`).classList.remove('hide'); $(`${boxId}-next`).querySelector('button').focus();
+  }
+  function next(){ i++; i<qs.length ? show() : end(); }
+  function end(){
+    const best = Math.max(getBest(key), score); setBest(key, best);
+    const pct = score/qs.length;
+    const msg = pct===1 ? 'Parfait ! 🏆' : pct>=0.8 ? 'Très bien ! 🌟' : pct>=0.5 ? 'Pas mal, continue ! 💪' : 'Relis la leçon et réessaie 📘';
+    box.innerHTML = `<h2>${title} — terminé</h2>
+      <div class="score">${score} / ${qs.length}</div><p><b>${msg}</b><br>Meilleur score : ${best} / ${qs.length}</p>
+      ${wrong.length ? `<h3>À revoir</h3><ul class="review">${wrong.map(w=>`<li>${w}</li>`).join('')}</ul>` : ''}
+      <div class="row"><button class="btn" id="${boxId}-again">Rejouer (nouvelles questions)</button></div>`;
+    $(`${boxId}-again`).onclick = start;
+  }
+  return { start };
+}
+function buildQCM(){
+  return shuffle(QCM).slice(0, NB_QCM).map(q => ({
+    prompt: esc(q.q), opts: shuffle([q.r, ...q.f]), answer: q.r,
+    explain: '', recap: `${esc(q.q)} → <b>${esc(q.r)}</b>`
+  }));
+}
+function buildRom(){
+  const out = [], seen = new Set();
+  while (out.length < NB_ROM){ const q = romQuestion(); if (!seen.has(q.recap)){ seen.add(q.recap); out.push(q); } }
+  return out;
+}
+const runner = {
+  quiz: makeRunner('quizBox', 'qcm', 'Quiz : se repérer dans le temps', buildQCM),
+  rom:  makeRunner('romBox',  'rom', 'Chiffres romains et siècles', buildRom)
+};
+
+/* ---------- Frise à reconstituer ---------- */
+function friseGame(){
+  const box = $('friseBox'); box.dataset.started = 1;
+  let step = 0, errors = 0, placed = 0;
+  function slots(){
+    return `<div class="slots">${PERIODES.map((p,k)=>`<div class="slot" id="sl${k}">${k+1}</div>`).join('')}</div>`;
+  }
+  function stage1(){
+    step = 1; placed = 0; errors = 0;
+    box.innerHTML = `<h2>Frise à reconstituer</h2>
+      <p><b>Étape 1 :</b> clique sur les périodes <b>dans l'ordre</b>, de la plus ancienne à la plus récente.</p>
+      ${slots()}<div class="pool" id="pool"></div><p class="hint">Erreurs : <span id="err">0</span></p>`;
+    $('pool').innerHTML = shuffle(PERIODES.map((p,k)=>k)).map(k=>`<button data-k="${k}">${PERIODES[k].n}</button>`).join('');
+    $('pool').querySelectorAll('button').forEach(b => b.onclick = () => {
+      const k = +b.dataset.k;
+      if (k === placed){
+        const p = PERIODES[k], s = $('sl'+k);
+        s.className = `slot filled ${p.c}`; s.innerHTML = `<b>${p.n}</b><small>${p.d}</small>`;
+        b.remove(); placed++;
+        if (placed === 5) setTimeout(stage2, 500);
+      } else { errors++; $('err').textContent = errors; b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake'); }
+    });
+  }
+  function stage2(){
+    step = 2; let cur = 0;
+    const s1err = errors;
+    box.querySelector('p').innerHTML = `<b>Étape 2 :</b> quel événement marque le début de <b id="curP"></b> ?`;
+    const pool = $('pool');
+    pool.innerHTML = shuffle(PERIODES.map((p,k)=>k)).map(k=>`<button data-k="${k}">${PERIODES[k].ev}</button>`).join('');
+    const setCur = () => { $('curP').textContent = PERIODES[cur].n.replace(/^(La|Le|Les|L')/, m => m.toLowerCase()); $('sl'+cur).style.outline = '3px solid var(--ink)'; };
+    setCur();
+    pool.querySelectorAll('button').forEach(b => b.onclick = () => {
+      const k = +b.dataset.k;
+      if (k === cur){
+        const s = $('sl'+k); s.style.outline = ''; s.insertAdjacentHTML('beforeend', `<span class="ev">${PERIODES[k].ev}</span>`);
+        b.remove(); cur++;
+        if (cur === 5) return finish(s1err);
+        setCur();
+      } else { errors++; $('err').textContent = errors; b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake'); }
+    });
+  }
+  function finish(s1err){
+    const best = getBest('frise_best'), first = best === 0;
+    // on garde le plus petit nombre d'erreurs (+1 pour distinguer "jamais joué")
+    if (first || errors+1 < best) setBest('frise_best', errors+1);
+    const rec = first || errors+1 < best;
+    box.querySelector('p').innerHTML = errors === 0
+      ? '🏆 <b>Frise parfaite, sans aucune erreur !</b>'
+      : `🎉 <b>Frise terminée !</b> ${errors} erreur${errors>1?'s':''} (${s1err} pour l'ordre, ${errors-s1err} pour les événements).`;
+    $('pool').innerHTML = `<p class="hint" style="margin:0">${rec && !first ? '🏆 Nouveau record ! ' : ''}Meilleur résultat : ${(rec?errors:best-1)} erreur${(rec?errors:best-1)>1?'s':''}.</p>`;
+    box.insertAdjacentHTML('beforeend', `<div class="row"><button class="btn" id="frAgain">Rejouer</button></div>`);
+    $('frAgain').onclick = stage1;
+  }
+  stage1();
+}
+
+/* ---------- Onglets ---------- */
+document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x===b));
+  ['lecon','quiz','romains','frise'].forEach(id => $(id).classList.toggle('hide', id!==b.dataset.tab));
+  if (b.dataset.tab==='quiz' && !$('quizBox').dataset.started) runner.quiz.start();
+  if (b.dataset.tab==='romains' && !$('romBox').dataset.started) runner.rom.start();
+  if (b.dataset.tab==='frise' && !$('friseBox').dataset.started) friseGame();
+});
+</script>
+</body>
+</html>
