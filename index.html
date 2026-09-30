@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiz de français</title>
-<meta name="description" content="Tous les quiz d'orthographe et de grammaire.">
+<title>Mes quiz</title>
+<meta name="description" content="Tous les quiz de français, de maths et d'histoire.">
 <style>
   :root{--bg:#f4f7fb;--card:#fff;--ink:#1f2a37;--muted:#5b6b7d;--primary:#1f7a6d;--primary-soft:#e2f3ef;--accent:#e8833a;--line:#dde4ec}
   *{box-sizing:border-box}
@@ -32,13 +32,13 @@
 </head>
 <body>
 <header><div class="wrap">
-  <h1>📚 Quiz de français</h1>
-  <p>Orthographe, homophones, dictées — choisis un quiz !</p>
+  <h1>📚 Mes quiz</h1>
+  <p>Français, maths et histoire — choisis un quiz !</p>
 </div></header>
 
 <main class="wrap">
   <div class="tools">
-    <input id="q" type="search" placeholder="Rechercher (ex. homophones, son é, dictée…)">
+    <input id="q" type="search" placeholder="Rechercher (ex. homophones, tables, dictée…)">
     <span id="chips"></span>
   </div>
   <div class="grid" id="grid"></div>
@@ -52,14 +52,20 @@
 const CATALOGUE = [
   {file:'a_ou_a.html', title:'« a » ou « à » + mots de la dictée (CM2)',
    desc:"Choisir entre a (verbe avoir) et à (préposition), réviser les mots de la dictée « L'amphithéâtre de Nîmes » et corriger un texte.",
-   themes:['homophones','a/à','dictée','CM2'], isNew:true},
+   themes:['homophones','a/à','dictée','CM2']},
   {file:'chasse_au_son_e.html', title:'Chasse au son « é » — série 1',
    desc:'Choisir la bonne terminaison du son « é » : règle, quiz et texte à corriger.', themes:['son é','CM2','4e']},
   {file:'chasse_au_son_e_2.html', title:'Chasse au son « é » — série 2',
    desc:'Nouvelle série sur le son « é ».', themes:['son é','CM2','4e']},
   {file:'homophones.html', title:'Homophones grammaticaux',
    desc:'N1 : a/à, et/est, son/sont, on/ont, ou/où — N2 : ce/se, ces/ses/c\'est/s\'est, leur/leurs, peu/peut, la/là/l\'a…',
-   themes:['homophones','CM2','4e']}
+   themes:['homophones','CM2','4e']},
+  {file:'tables_6_10.html', title:'Tables de multiplication de 6 à 10',
+   desc:'Apprendre et réviser les tables de 6, 7, 8, 9 et 10 : tables et astuces, quiz de 20 questions, facteur manquant et défi chrono.',
+   themes:['maths','tables de multiplication','CM2']},
+  {file:'histoire_temps_romains.html', title:'Se repérer dans le temps + chiffres romains (CM2)',
+   desc:'Histoire : la frise chronologique, les 5 grandes périodes, avant/après J.-C., les siècles et les chiffres romains.',
+   themes:['histoire','frise','chiffres romains','CM2'], isNew:true}
 ];
 
 const grid = document.getElementById('grid');
