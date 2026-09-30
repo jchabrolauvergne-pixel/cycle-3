@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>« a » ou « à » + mots de la dictée (CM2)</title>
+<meta name="description" content="Choisir entre a (verbe avoir) et à (préposition), réviser les mots de la dictée « L'amphithéâtre de Nîmes » et corriger un texte.">
+<meta name="themes" content="homophones, a/à, dictée, CM2">
+<style>
+  :root{
+    --bg:#f4f7fb; --card:#ffffff; --ink:#1f2a37; --muted:#5b6b7d;
+    --primary:#1f7a6d; --primary-soft:#e2f3ef; --accent:#e8833a; --accent-soft:#fdeede;
+    --ok:#2e9e5b; --ok-soft:#e3f6ea; --ko:#d14343; --ko-soft:#fbe5e5; --line:#dde4ec;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.5}
+  header{background:var(--primary);color:#fff;padding:18px 16px 0}
+  .wrap{max-width:860px;margin:0 auto}
+  header a.back{color:#d8f1ec;text-decoration:none;font-size:15px}
+  h1{margin:6px 0 4px;font-size:26px}
+  .sub{margin:0 0 14px;color:#d8f1ec;font-size:16px}
+  .badge{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:600;margin-left:6px;vertical-align:middle}
+  nav{display:flex;gap:6px;flex-wrap:wrap}
+  nav button{border:0;background:rgba(255,255,255,.15);color:#fff;padding:10px 14px;border-radius:10px 10px 0 0;font-size:16px;cursor:pointer;font-weight:600}
+  nav button.on{background:var(--bg);color:var(--primary)}
+  main{padding:18px 16px 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  h2{margin:0 0 10px;font-size:21px;color:var(--primary)}
+  .rule{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .rule>div{border-radius:12px;padding:14px}
+  .rule .ra{background:var(--primary-soft)}
+  .rule .rb{background:var(--accent-soft)}
+  .big{font-size:40px;font-weight:800;line-height:1}
+  .ex{font-style:italic}
+  .tip{background:#fff8d8;border-left:5px solid #f0c400;padding:10px 14px;border-radius:8px;margin-top:12px}
+  table{width:100%;border-collapse:collapse;font-size:17px}
+  td,th{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+  th{background:var(--primary-soft);width:30%}
+  .q-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:15px;margin-bottom:6px}
+  .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:16px}
+  .bar>i{display:block;height:100%;background:var(--primary);width:0;transition:width .3s}
+  .prompt{font-size:22px;margin:6px 0 18px}
+  .hint{color:var(--muted);font-size:16px;margin-bottom:4px}
+  .blank{display:inline-block;min-width:44px;border-bottom:3px solid var(--accent);text-align:center;font-weight:700;color:var(--accent)}
+  .opts{display:flex;gap:10px;flex-wrap:wrap}
+  .opts button{flex:1 1 140px;font-size:22px;padding:14px;border:2px solid var(--line);background:#fff;border-radius:12px;cursor:pointer;font-weight:600;color:var(--ink)}
+  .opts button:hover:not(:disabled){border-color:var(--primary)}
+  .opts button.good{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+  .opts button.bad{background:var(--ko-soft);border-color:var(--ko);color:var(--ko)}
+  .fb{margin-top:14px;padding:12px 14px;border-radius:10px;display:none}
+  .fb.ok{display:block;background:var(--ok-soft)}
+  .fb.ko{display:block;background:var(--ko-soft)}
+  .btn{border:0;background:var(--primary);color:#fff;font-size:17px;font-weight:600;padding:11px 18px;border-radius:10px;cursor:pointer}
+  .btn.alt{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .score{font-size:44px;font-weight:800;color:var(--primary);margin:6px 0}
+  .review li{margin-bottom:6px}
+  s{color:var(--ko)}
+  .text{font-size:20px;line-height:2.1}
+  .text span.w{cursor:pointer;border-radius:5px;padding:1px 1px}
+  .text span.w:hover{background:#eef3f8}
+  .text span.found{background:var(--ok-soft);color:var(--ok);font-weight:700}
+  .text span.miss{background:var(--ko-soft);animation:shake .3s}
+  .text span.shown{background:var(--accent-soft);font-weight:700}
+  .text span.shown s{margin-right:4px}
+  .counter{display:flex;gap:16px;flex-wrap:wrap;font-weight:600;margin-bottom:10px}
+  .counter .g{color:var(--ok)} .counter .b{color:var(--ko)}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+  .hide{display:none}
+  @media (max-width:600px){.rule{grid-template-columns:1fr} body{font-size:17px} .prompt{font-size:20px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html">← Tous les quiz</a>
+    <h1>« a » ou « à » ? <span class="badge">CM2</span></h1>
+    <p class="sub">Homophones + mots de la dictée : L'amphithéâtre de Nîmes</p>
+    <nav id="tabs">
+      <button data-tab="regle" class="on">📘 Règle</button>
+      <button data-tab="quiz">✏️ Quiz a / à</button>
+      <button data-tab="mots">🏛️ Mots de la dictée</button>
+      <button data-tab="texte">🔍 Texte à corriger</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ RÈGLE ============ -->
+  <section id="regle">
+    <div class="card">
+      <h2>La règle</h2>
+      <div class="rule">
+        <div class="ra">
+          <div class="big">a</div>
+          <p><b>sans accent</b> : c'est le verbe <b>avoir</b> (il a, elle a).</p>
+          <p>On peut le remplacer par <b>avait</b>.</p>
+          <p class="ex">L'amphithéâtre <b>a</b> été construit par les Gallo-Romains.<br>→ L'amphithéâtre <b>avait</b> été construit… ✔</p>
+        </div>
+        <div class="rb">
+          <div class="big">à</div>
+          <p><b>avec un accent grave</b> : c'est une <b>préposition</b>.</p>
+          <p>On <b>ne peut pas</b> le remplacer par <b>avait</b>.</p>
+          <p class="ex">Elle visite l'amphithéâtre <b>à</b> Nîmes.<br>→ Elle visite l'amphithéâtre <s>avait</s> Nîmes ✘</p>
+        </div>
+      </div>
+      <div class="tip">💡 <b>Astuce :</b> remplace par <b>avait</b>. Si la phrase a du sens → <b>a</b>. Sinon → <b>à</b>.<br>
+      Attention aussi à <b>jusqu'à</b> et <b>grâce à</b> : toujours avec l'accent !</div>
+    </div>
+
+    <div class="card">
+      <h2>Mots à apprendre pour la dictée</h2>
+      <table>
+        <tr><th>noms</th><td>le siècle, une époque, la Gaule, le mètre, l'étage, la hauteur, le spectateur, le Gallo-Romain, le combat, la bataille, le gladiateur, l'animal / les animaux, l'eau, l'arène, les gradins, la galerie, l'intérieur, un riche, un pauvre</td></tr>
+        <tr><th>verbes</th><td>compter, accueillir, assister, accéder, s'installer</td></tr>
+        <tr><th>adjectifs et participes passés</th><td>I<sup>er</sup> (premier), construit, romain, violent, plein</td></tr>
+        <tr><th>mots invariables</th><td>jusqu'à, même, grâce, en bas, en haut, peut-être</td></tr>
+      </table>
+      <div class="tip">👀 Pièges : acc<b>ue</b>illir (et pas « acceuillir »), l'ar<b>è</b>ne, acc<b>é</b>der, la ga<b>l</b>erie (un seul l), un anima<b>l</b> → des anima<b>ux</b>, peut<b>-</b>être avec un trait d'union.</div>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ (moteur commun) ============ -->
+  <section id="quiz" class="hide"><div class="card" id="quizBox"></div></section>
+  <section id="mots" class="hide"><div class="card" id="motsBox"></div></section>
+
+  <!-- ============ TEXTE ============ -->
+  <section id="texte" class="hide">
+    <div class="card">
+      <h2>Texte à corriger</h2>
+      <p class="hint">Ce texte contient <b id="nbF"></b> fautes (a/à et mots de la dictée). Clique sur un mot que tu crois faux : s'il est faux, il se corrige tout seul !</p>
+      <div class="counter"><span class="g">✔ Trouvées : <span id="tFound">0</span> / <span id="tTotal"></span></span><span class="b">✘ Clics sur un mot juste : <span id="tMiss">0</span></span></div>
+      <div class="text" id="txt"></div>
+      <div class="row">
+        <button class="btn alt" id="tShow">Voir la correction</button>
+        <button class="btn" id="tReset">Recommencer</button>
+      </div>
+      <p id="tEnd" class="tip hide"></p>
+    </div>
+  </section>
+</main>
+
+<script>
+const QUIZ_ID = 'a-ou-a-1';
+
+/* ---------- Banque a / à (28 phrases, 20 tirées) ---------- */
+const AA = [
+  {s:"L'amphithéâtre ___ été construit par les Gallo-Romains.", r:"a"},
+  {s:"Les spectateurs accèdent ___ l'arène par une galerie.", r:"à"},
+  {s:"Le gladiateur ___ un bouclier et une épée.", r:"a"},
+  {s:"Nous allons ___ Nîmes pendant les vacances.", r:"à"},
+  {s:"Mon frère ___ compté les gradins un par un.", r:"a"},
+  {s:"Il faut monter jusqu'___ l'étage du haut.", r:"à"},
+  {s:"Au Ier siècle, la Gaule ___ connu une époque de paix.", r:"a"},
+  {s:"Chaque riche ___ une place en bas, près de l'arène.", r:"a"},
+  {s:"Les pauvres s'installent tout en haut, ___ plus de vingt mètres.", r:"à"},
+  {s:"Le combat commence ___ trois heures.", r:"à"},
+  {s:"Ce spectateur ___ peur des animaux.", r:"a"},
+  {s:"Le public assiste ___ une bataille violente.", r:"à"},
+  {s:"Grâce ___ ses gradins, l'arène peut accueillir beaucoup de monde.", r:"à"},
+  {s:"Léa ___ pris une photo de l'amphithéâtre.", r:"a"},
+  {s:"On donne de l'eau ___ boire aux animaux.", r:"à"},
+  {s:"L'arène ___ même servi de forteresse au Moyen Âge.", r:"a"},
+  {s:"Il y ___ des arcades à chaque étage.", r:"a"},
+  {s:"Cette galerie mène ___ l'intérieur.", r:"à"},
+  {s:"Le gladiateur romain ___ gagné son premier combat.", r:"a"},
+  {s:"Les enfants jouent ___ la bataille dans la cour.", r:"à"},
+  {s:"Elle ___ oublié son guide sur les gradins.", r:"a"},
+  {s:"La hauteur du mur ___ impressionné les visiteurs.", r:"a"},
+  {s:"___ l'intérieur, il fait frais.", r:"à", cap:true},
+  {s:"Mon père ___ accepté de visiter les arènes avec nous.", r:"a"},
+  {s:"C'est ___ toi de compter les arches.", r:"à"},
+  {s:"L'amphithéâtre est plein ___ craquer.", r:"à"},
+  {s:"Peut-être qu'il ___ vu un vrai spectacle.", r:"a"},
+  {s:"Le gladiateur fait face ___ un animal sauvage.", r:"à"}
+];
+const AA_COUNT = 20;
+
+/* ---------- Banque mots de la dictée (31 mots, 12 tirés) ---------- */
+const MOTS = [
+  {w:"le siècle", f:["le cièccle","le sciècle"], h:"Une période de cent ans"},
+  {w:"une époque", f:["une épocque","une époc"], h:"Un moment de l'histoire"},
+  {w:"la Gaule", f:["la Gôle","la Gaul"], h:"L'ancien nom de la France"},
+  {w:"le mètre", f:["le métre","le mêtre"], h:"Une unité de longueur (100 cm)"},
+  {w:"l'étage", f:["l'étaje","l'éttage"], h:"Un niveau d'un bâtiment"},
+  {w:"la hauteur", f:["la auteur","la hauteure"], h:"La mesure de bas en haut"},
+  {w:"le spectateur", f:["le spéctateur","le spectateure"], h:"Celui qui regarde le spectacle"},
+  {w:"le combat", f:["le conbat","le combas"], h:"Une lutte entre deux adversaires"},
+  {w:"la bataille", f:["la bataye","la batail"], h:"Un grand combat entre deux armées"},
+  {w:"le gladiateur", f:["le gladiateure","le gladiatteur"], h:"Le combattant de l'arène romaine"},
+  {w:"les animaux", f:["les animals","les animeaux"], h:"Le pluriel de « l'animal »"},
+  {w:"l'arène", f:["l'arêne","l'arènne"], h:"Le sol de sable où ont lieu les combats"},
+  {w:"les gradins", f:["les gradains","les graddins"], h:"Les grandes marches où l'on s'assoit"},
+  {w:"la galerie", f:["la gallerie","la galerrie"], h:"Un long couloir"},
+  {w:"l'intérieur", f:["l'intérieurre","l'intèrieur"], h:"Le contraire de l'extérieur"},
+  {w:"un pauvre", f:["un pôvre","un pauve"], h:"Le contraire d'un riche"},
+  {w:"le Gallo-Romain", f:["le Galo-Romain","le Gallo-Rommain"], h:"Un habitant de la Gaule romaine"},
+  {w:"accueillir", f:["acceuillir","accueuillir"], h:"Recevoir quelqu'un chez soi"},
+  {w:"accéder", f:["acéder","accèder"], h:"Pouvoir entrer, atteindre un lieu"},
+  {w:"s'installer", f:["s'instaler","s'enstaller"], h:"Prendre place, s'asseoir"},
+  {w:"assister", f:["asister","assiter"], h:"Être présent à un spectacle"},
+  {w:"compter", f:["comter","conpter"], h:"Dire les nombres : 1, 2, 3…"},
+  {w:"construit", f:["contruit","constrit"], h:"Le participe passé de « construire »"},
+  {w:"romain", f:["romin","rommain"], h:"Qui vient de Rome"},
+  {w:"violent", f:["vyolent","violen"], h:"Brutal, très fort"},
+  {w:"plein", f:["plin","pleint"], h:"Le contraire de vide"},
+  {w:"jusqu'à", f:["jusqu'a","jusca"], h:"Indique une limite : … demain"},
+  {w:"même", f:["mème","meme"], h:"Pareil, identique"},
+  {w:"grâce", f:["grace","grâsse"], h:"… à toi, j'ai réussi !"},
+  {w:"peut-être", f:["peu-être","peutêtre"], h:"Sans doute, possiblement"},
+  {w:"en haut", f:["en hau","en ho"], h:"Le contraire de « en bas »"}
+];
+const MOTS_COUNT = 12;
+
+/* ---------- Texte à corriger : [faux|juste] ---------- */
+const TEXTE = "L'amphithéâtre de Nîmes [à|a] été construit au Ier [cièccle|siècle], [a|à] une [épocque|époque] où la Gaule était romaine. Il mesure plus de vingt mètres de [auteur|hauteur]. Il pouvait [acceuillir|accueillir] vingt mille [spectateures|spectateurs]. Les riches s'installaient en bas, près de l'[arêne|arène], et les pauvres tout en [hau|haut], sur les derniers [gradains|gradins]. Chacun [à|a] sa place ! Grâce [a|à] de longues [galleries|galeries], on pouvait [accèder|accéder] vite [a|à] son [étaje|étage]. Le public venait [asister|assister] [a|à] des combats [violants|violents] entre gladiateurs ou contre des [animals|animaux]. Aujourd'hui, l'amphithéâtre [à|a] été restauré et il reste [plain|plein] de visiteurs [jusqu'a|jusqu'à] la fin de l'été. [Peut être|Peut-être] irons-nous le visiter l'an prochain !";
+
+/* ---------- Outils ---------- */
+const $ = id => document.getElementById(id);
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const bestKey = k => `quizBest_${QUIZ_ID}_${k}`;
+function getBest(k){ try{ return parseInt(localStorage.getItem(bestKey(k)))||0; }catch(e){ return 0; } }
+function setBest(k,v){ try{ localStorage.setItem(bestKey(k), v); }catch(e){} }
+
+/* ---------- Onglets ---------- */
+document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x===b));
+  ['regle','quiz','mots','texte'].forEach(id => $(id).classList.toggle('hide', id!==b.dataset.tab));
+  if (b.dataset.tab==='quiz' && !$('quizBox').dataset.started) runner.aa.start();
+  if (b.dataset.tab==='mots' && !$('motsBox').dataset.started) runner.mots.start();
+});
+
+/* ---------- Construction des questions ---------- */
+function buildAA(){
+  return shuffle(AA).slice(0, AA_COUNT).map(q => {
+    const opts = q.cap ? ['A','À'] : ['a','à'];
+    const answer = q.cap ? q.r.toUpperCase() : q.r;
+    const avait = q.s.replace('___', q.cap ? 'Avait' : 'avait');
+    const correct = q.s.replace('___', `<b>${answer}</b>`);
+    const explain = q.r === 'a'
+      ? `On peut dire : « ${avait} » ✔<br>C'est le verbe <b>avoir</b> → <b>${answer}</b> sans accent.`
+      : `« ${avait} » ✘ ne veut rien dire.<br>C'est la préposition → <b>${answer}</b> avec un accent.`;
+    return { prompt: `<div class="prompt">${q.s.replace('___','<span class="blank">?</span>')}</div>`,
+             opts, answer, explain, recap: correct };
+  });
+}
+function buildMots(){
+  return shuffle(MOTS).slice(0, MOTS_COUNT).map(m => ({
+    prompt: `<div class="hint">Indice : ${m.h}</div><div class="prompt">Quelle est la bonne orthographe ?</div>`,
+    opts: shuffle([m.w, ...m.f]), answer: m.w,
+    explain: `On écrit : <b>${m.w}</b>`, recap: `${m.h} → <b>${m.w}</b>`
+  }));
+}
+
+/* ---------- Moteur de quiz ---------- */
+function makeRunner(boxId, key, title, build){
+  const box = $(boxId); let qs, i, score, wrong;
+  function start(){ box.dataset.started = 1; qs = build(); i = 0; score = 0; wrong = []; show(); }
+  function show(){
+    const q = qs[i];
+    box.innerHTML = `<h2>${title}</h2>
+      <div class="q-top"><span>Question ${i+1} / ${qs.length}</span><span>Score : ${score}</span></div>
+      <div class="bar"><i style="width:${i/qs.length*100}%"></i></div>
+      ${q.prompt}
+      <div class="opts">${q.opts.map(o=>`<button>${esc(o)}</button>`).join('')}</div>
+      <div class="fb" id="${boxId}-fb"></div>
+      <div class="row hide" id="${boxId}-next"><button class="btn">${i+1<qs.length?'Question suivante →':'Voir mon score'}</button></div>`;
+    box.querySelectorAll('.opts button').forEach((b,k) => b.onclick = () => answer(k));
+    box.querySelector(`#${boxId}-next button`).onclick = () => { i++; i<qs.length ? show() : end(); };
+  }
+  function answer(k){
+    const q = qs[i], btns = box.querySelectorAll('.opts button'), fb = $(`${boxId}-fb`);
+    btns.forEach(b => b.disabled = true);
+    const ok = q.opts[k] === q.answer;
+    btns.forEach((b,j) => { if (q.opts[j]===q.answer) b.classList.add('good'); else if (j===k) b.classList.add('bad'); });
+    if (ok) score++; else wrong.push(q.recap);
+    fb.className = 'fb ' + (ok ? 'ok' : 'ko');
+    fb.innerHTML = (ok ? '✔ <b>Bravo !</b><br>' : '✘ <b>Pas tout à fait…</b><br>') + q.explain;
+    $(`${boxId}-next`).classList.remove('hide');
+    $(`${boxId}-next`).querySelector('button').focus();
+  }
+  function end(){
+    const best = Math.max(getBest(key), score); setBest(key, best);
+    const pct = score/qs.length;
+    const msg = pct===1 ? 'Parfait ! 🏆' : pct>=0.8 ? 'Très bien ! 🌟' : pct>=0.5 ? 'Pas mal, continue ! 💪' : 'Relis la règle et réessaie 📘';
+    box.innerHTML = `<h2>${title} — terminé</h2>
+      <div class="score">${score} / ${qs.length}</div><p><b>${msg}</b><br>Meilleur score : ${best} / ${qs.length}</p>
+      ${wrong.length ? `<h3>À revoir</h3><ul class="review">${wrong.map(w=>`<li>${w}</li>`).join('')}</ul>` : ''}
+      <div class="row"><button class="btn" id="${boxId}-again">Rejouer (nouvelles questions)</button></div>`;
+    $(`${boxId}-again`).onclick = start;
+  }
+  return { start };
+}
+const runner = {
+  aa:   makeRunner('quizBox', 'aa',   'Quiz : a ou à ?', buildAA),
+  mots: makeRunner('motsBox', 'mots', 'Mots de la dictée', buildMots)
+};
+
+/* ---------- Texte à corriger ---------- */
+let tFound, tMiss, tTotal;
+function buildText(){
+  tFound = 0; tMiss = 0; tTotal = 0;
+  const txt = $('txt'); txt.innerHTML = '';
+  const re = /\[([^|\]]+)\|([^\]]+)\]/g; let last = 0, m;
+  const addPlain = str => str.split(/(\s+)/).forEach(tok => {
+    if (!tok) return;
+    if (/^\s+$/.test(tok)) { txt.appendChild(document.createTextNode(tok)); return; }
+    const s = document.createElement('span'); s.className = 'w'; s.textContent = tok;
+    s.onclick = () => { if (s.dataset.done) return; tMiss++; upd(); s.classList.remove('miss'); void s.offsetWidth; s.classList.add('miss'); setTimeout(()=>s.classList.remove('miss'),600); };
+    txt.appendChild(s);
+  });
+  while ((m = re.exec(TEXTE))) {
+    addPlain(TEXTE.slice(last, m.index));
+    const s = document.createElement('span'); s.className = 'w err'; s.textContent = m[1]; s.dataset.ok = m[2]; s.dataset.bad = m[1];
+    s.onclick = () => { if (s.dataset.done) return; s.dataset.done = 1; s.textContent = s.dataset.ok; s.classList.add('found'); tFound++; upd(); };
+    txt.appendChild(s); tTotal++; last = re.lastIndex;
+  }
+  addPlain(TEXTE.slice(last));
+  $('nbF').textContent = tTotal; $('tTotal').textContent = tTotal; $('tEnd').classList.add('hide'); upd();
+}
+function upd(){
+  $('tFound').textContent = tFound; $('tMiss').textContent = tMiss;
+  if (tFound === tTotal) {
+    const e = $('tEnd'); e.classList.remove('hide');
+    e.innerHTML = `🎉 Toutes les fautes sont trouvées ! (${tMiss} clic${tMiss>1?'s':''} sur des mots justes)<br>✍️ Pour finir : recopie le texte corrigé dans ton cahier.`;
+  }
+}
+$('tShow').onclick = () => document.querySelectorAll('#txt .err').forEach(s => {
+  if (s.dataset.done) return; s.dataset.done = 1;
+  s.innerHTML = `<s>${esc(s.dataset.bad)}</s>${esc(s.dataset.ok)}`; s.classList.add('shown');
+});
+$('tReset').onclick = buildText;
+buildText();
+</script>
+</body>
+</html>
